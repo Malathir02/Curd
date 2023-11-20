@@ -1,0 +1,238 @@
+ff<html>
+    <head>
+        <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide|Sofia|Trirong"> -->
+    </head>
+        <style>
+body{
+ /* background-image: url(download\ \(1\).jpg); */
+ background-size: 100% 100%;
+ background-repeat: no-repeat;
+ font-family: sans-serif;
+ background-color: #d8e5ec;
+}
+h1 {
+  text-align: center;
+  font-family:  sans-serif;
+  text-shadow: 2px 2px #3cc0d1;
+  font-size: 50px;
+}
+input {
+  width: 60%;
+  margin-left: 100px;
+  height: 30px;
+}
+fieldset {
+  filter:brightness(100px);
+  width: 600px;
+  height: 500px;
+  margin-left: 25%;
+  padding-top: 50px;
+  background-color: white;
+  padding-bottom: 100px;
+}
+select {
+  width: 60%;
+  margin-left: 100px;
+  height: 30px;
+}
+label {
+  margin-left: 100px;
+}
+button {
+  width: 150px;
+  background-color:#17a2b8;
+  height: 50px;
+  border-radius: 25px;
+  box-shadow: 3px 3px rgb(14, 15, 15);
+  margin-left: 100px;
+  margin-top: 10px;
+}
+.reset {
+  width: 150px;
+  margin-left: 60px;
+  height: 50px;
+  background-color:#17a2b8;
+  border-radius: 25px;
+  box-shadow: 3px 3px rgb(14, 15, 15);
+/* border: 2px solid #9ea0a0; */
+}
+td:hover {
+  background-color: rgb(247, 247, 242);
+  color: rgb(248, 246, 246);
+}
+table {
+  border-collapse: collapse;
+  margin: auto;
+  margin-top: 5vw;
+}
+.table,
+td,
+th {
+  border: 5px solid #d1dddf;
+  text-align: center;
+  border-collapse: collapse;
+  background-color: rgb(252, 246, 246);
+  font-family: "Courier New", Courier, monospace;
+  background-color: black;
+  color: white;
+}
+td {
+  background-color: rgb(255, 255, 255);
+  color: black;
+}
+
+
+.error-message{ /* error message css - initially the error message not displayed */
+  color: red;
+  display: none;
+}
+.error{ /* error message css - initially the error message not displayed */
+  color: red;
+  display: none;
+  padding-left: 100px;
+}
+
+
+    </style>
+      <body>
+<form id="info" onsubmit="return AddData()">
+  <h1>Start your Free Trial</h1>
+  <fieldset>
+    <legend>Free Trial</legend>
+    <input type="text"  id="fname"     name="fname" placeholder="First name"/><br /><br /> 
+    <p style="font-size: smaller;padding-left: 100px;" class="error-message" id="fname-error"> *First name is required.</p><!-- error message -->
+    <input  type="text"  id="lname"   name="lname"   placeholder="Last name" /><br /><br />
+    <p style="font-size: smaller;padding-left: 100px;" class="error-message" id="lname-error"> *Last Name is required.</p>
+    <input type="email"  id="email"    name="email"  placeholder="Email"  ><br /><br />
+    <p style="font-size: smaller;padding-left: 100px;" class="error-message" id="email-error">*email must inclued @ and .com</p>
+    <input type="text" id="phone" name="phone" placeholder="phone" />
+    <p style="font-size: smaller;padding-left: 100px;" class="error-message" id="phone-error">*phone number is required.</p><br /><br />
+    <input type="text" id="company" placeholder="company" />
+    <p style="font-size: smaller;padding-left: 100px;" class="error-message" id="company-error">*company name is required.</p><br /><br />
+    <input class="emp" id="Employees" type="text" placeholder="Employees" /><br /><br />
+    <p style="font-size: smaller;padding-left: 100px;" class="error-message" id="employees-error">*this is required.</p>
+    <label for="country"> country</label><br />
+    <select id="country">
+    <option value="United Kingdom">United Kingdom</option>
+    <option value="United States">United States</option>
+    <option value="United Arab Emirates">United Arab Emirates</option>
+    </select>
+    <label  for="company language"> </label><br /><br />
+    <select id="companylanguage" >
+    <option>English</option>
+    <option>Spanish</option>
+    <option>Other</option>
+    </select><br><br>
+    <button class="submit" id="submit()" >submit</button>
+    <input class="reset" type="reset" />
+  </fieldset>
+  <table id="list" cellspacing="3" cellpadding="3" >
+    <thead>
+      <tr>
+        <th>first Name</th>
+        <th>last name</th>
+        <th>email</th>
+        <th>phone</th>
+        <th>company</th>
+        <th>Employees</th>
+        <th>country</th>
+        <th>companylanguage</th>
+      </tr>
+  </thead>
+  <tbody   class="hover" id="tab" >
+  </tbody>
+  </table>
+
+</form>
+        </body>
+       
+    </head>
+
+    <script>
+      debugger
+ 
+        document.getElementById('info').addEventListener('submit', function(event) {
+    event.preventDefault();
+   
+       var fname = document.getElementById('fname').value;
+       var  lname= document.getElementById( 'lname').value;
+       var email = document.getElementById('email').value;
+       var phone = document.getElementById('phone').value;
+       var company = document.getElementById('company').value;
+       var Employees = document.getElementById('Employees').value;
+       var country = document.getElementById('country').value;
+       var companylanguage = document.getElementById('companylanguage').value;
+   
+      
+       const fnameError = document.getElementById("fname-error"); //  declaring variable
+                                                                                                              
+      if(fname === ""){ // if the fname is empty change style.display css
+        fnameError.style.display = "block";
+        return;
+      }else{ // else the fname have value hide the message using css
+        fnameError.style.display = "none"; 
+      }
+
+
+       var lnameError = document.getElementById("lname-error"); //  declaring variable
+                                                                                                              
+      if(lname === ""){ // if the fname is empty change style.display css
+        lnameError.style.display = "block";
+        return;
+      }else{ // else the fname have value hide the message using css
+        lnameError.style.display = "none"; 
+      }
+      var emailError = document.getElementById("email-error"); //  declaring variable
+                                                                                                              
+      if( email=== ""){ // if the fname is empty change style.display css
+        emailError.style.display = "block";
+        return;
+      }else{ // else the fname have value hide the message using css
+        emailError.style.display = "none"; 
+      }
+      var phoneError = document.getElementById("phone-error"); //  declaring variable
+                                                                                                              
+      if( phone=== ""){ // if the fname is empty change style.display css
+        phoneError.style.display = "block";
+        return;
+      }else{ // else the fname have value hide the message using css
+        phoneError.style.display = "none"; 
+      }
+      var companyError = document.getElementById("company-error"); //  declaring variable
+                                                                                                              
+      if( company=== ""){ // if the fname is empty change style.display css
+        companyError.style.display = "block";
+        return;
+      }else{ // else the fname have value hide the message using css
+        companyError.style.display = "none"; 
+      }
+      var EmployeesError = document.getElementById("employees-error"); //  declaring variable
+                                                                                                              
+      if( Employees=== ""){ // if the fname is empty change style.display css
+        EmployeesError.style.display = "block";
+        return;
+      }else{ // else the fname have value hide the message using css
+        EmployeesError.style.display = "none"; 
+      }
+
+       var newRow = '<tr><td>' + fname + '</td><td>' + lname + '</td><td>' + email+ '</td><td>'+phone+ '</td><td>'+ company +'</td><td>'+Employees+ '</td><td>' + country+ '</td><td>'+companylanguage+ '</td></tr>';
+document.getElementById('tab').insertAdjacentHTML('beforeend', newRow);
+
+});
+   
+  //     var newRow = '<tr><td>' + fname + '</td><td>' + lname + '</td><td>' + company +'</td><td>' + country+  '</td></tr>';
+  //     $(newRow).appendTo(" #list tbody");
+  //     //  console.log("firs name:", fname);
+  //     //  console.log("last name:", lname);
+  //     //  console.log("Email:", email);
+  //     //  console.log("phone:", phone);
+  //     //  console.log("company :", company);
+  //     //  console.log("country :", country);
+  //     //  console.log("companylanguage :",companylanguage );
+  //       }
+    
+  //  const showButton = document.getElementById("submit");
+  //    showButton.addEventListener("click", AddData);
+   
+   
+     </script>
